@@ -1,0 +1,13 @@
+# Core dependencies
+keyboard>=0.13.5
+numpy>=2.3.1
+sounddevice>=0.5.2  # This is the correct package name for python-sounddevice
+scipy>=1.16.0
+requests>=2.32.4
+python-dotenv>=1.0.0
+
+# Machine Learning dependencies
+torch>=2.2.0
+torchaudio>=2.2.0
+transformers>=4.37.0
+huggingface-hub>=0.21.0
