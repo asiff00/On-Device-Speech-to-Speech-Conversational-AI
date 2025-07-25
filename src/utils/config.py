@@ -27,6 +27,9 @@ class Settings(BaseSettings):
     VOICES_DIR: Path = BASE_DIR / "data" / "voices"
     OUTPUT_DIR: Path = BASE_DIR / "output"
     RECORDINGS_DIR: Path = BASE_DIR / "recordings"
+    
+    # Whisper settings
+    WHISPER_CPP_PATH: Optional[str] = Field(default=None, env="WHISPER_CPP_PATH", description="Optional path to whisper.cpp executable")
 
     ESPEAK_LIBRARY_PATH: str = r"C:\Program Files\eSpeak NG\libespeak-ng.dll"
     ESPEAK_PATH: str = r"C:\Program Files\eSpeak NG\espeak-ng.exe"

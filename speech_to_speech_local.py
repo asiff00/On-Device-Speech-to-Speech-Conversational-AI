@@ -1,21 +1,26 @@
 import keyboard
 import traceback
-import time
+import time 
 import requests
 import subprocess
 import numpy as np
 import wave
 import os
-from src.utils.config import settings
-from src.utils import (
-    VoiceGenerator,
-    get_ai_response,
-    play_audio_with_interrupt,
+from src.utils.config import settings as base_settings
+from src.utils.config_local import LocalSettings
+from src.utils.speech_local import (
     init_vad_pipeline,
     detect_speech_segments,
     record_continuous_audio,
     check_for_speech,
+    play_audio_with_interrupt,
 )
+from src.utils import (
+    VoiceGenerator,
+    get_ai_response,
+)
+
+settings = LocalSettings()
 from src.utils.audio_queue import AudioGenerationQueue
 from src.utils.llm import parse_stream_chunk
 import threading
@@ -33,9 +38,8 @@ timing_info = {
     "transcription_duration": None,
 }
 
-WHISPER_CPP_PATH = r"D:\bilal bahi\DAILER_PORTAL\whisper cpp\whisper.cpp"
-WHISPER_MODEL_PATH = os.path.join(WHISPER_CPP_PATH, "ggml-tiny.en.bin")
-WHISPER_CLI_PATH = os.path.join(WHISPER_CPP_PATH, "build", "bin", "Release", "whisper-cli.exe")
+WHISPER_MODEL_PATH = os.path.join(settings.WHISPER_CPP_PATH, settings.WHISPER_MODEL)
+WHISPER_CLI_PATH = os.path.join(settings.WHISPER_CPP_PATH, "build", "bin", "Release", "whisper-cli.exe")
 
 def transcribe_audio_local(audio_data, sample_rate=16000):
     """Transcribe audio using local whisper.cpp model."""

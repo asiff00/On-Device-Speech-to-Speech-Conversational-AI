@@ -1,13 +1,26 @@
 # Core dependencies
 keyboard>=0.13.5
 numpy>=2.3.1
-sounddevice>=0.5.2  # This is the correct package name for python-sounddevice
+sounddevice>=0.5.2
+soundfile>=0.13.1
 scipy>=1.16.0
 requests>=2.32.4
 python-dotenv>=1.0.0
+pyaudio>=0.2.13
+python-dateutil>=2.8.2
 
 # Machine Learning dependencies
 torch>=2.2.0
 torchaudio>=2.2.0
 transformers>=4.37.0
 huggingface-hub>=0.21.0
+pyannote.audio>=3.0.0
+phonemizer>=3.0.0
+librosa>=0.10.1
+
+# Settings and validation
+pydantic-settings>=2.0.0
+
+# Optional dependencies for better performance
+numba>=0.58.0
+llvmlite>=0.42.0
